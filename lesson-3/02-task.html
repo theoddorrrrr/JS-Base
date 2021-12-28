@@ -15,10 +15,10 @@
 
 <body>
     Рабочие дни
-    <div></div>
+    <div id="workDaysOutput"></div>
 
     Выходные дни
-    <div></div>
+    <div id="weekendDaysOutput"></div>
 
     <script>
        /*
@@ -28,14 +28,33 @@
         Можно внести в разметку соответствующие изменения, чтобы упростить задачу поиска необходимых div. 
         Параграфы создавайте с помощью перебора массива days. В параграф помещайте значение свойства name.
         */
+        let workDay = document.querySelector("#workDaysOutput");
+        let weekendDay = document.querySelector("#weekendDaysOutput");
 
-        let days = [{ name: "Sunday", isWorkDay: false },
-        { name: "Monday", isWorkDay: true },
-        { name: "Tuesday", isWorkDay: true },
-        { name: "Wednesday", isWorkDay: true },
-        { name: "Thursday", isWorkDay: true },
-        { name: "Friday", isWorkDay: true },
-        { name: "Saturday", isWorkDay: false }];
+        let days = [
+            { name: "Sunday", isWorkDay: false },
+            { name: "Monday", isWorkDay: true },
+            { name: "Tuesday", isWorkDay: true },
+            { name: "Wednesday", isWorkDay: true },
+            { name: "Thursday", isWorkDay: true },
+            { name: "Friday", isWorkDay: true },
+            { name: "Saturday", isWorkDay: false }
+        ];
+
+        function createParagraph(text) {
+            let item = document.createElement("p");
+            item.innerText = text;
+            return item;
+        }
+
+        for (const day of days) {
+            if(day.isWorkDay) {
+                workDay.append(createParagraph(day.name));
+            }
+            else {
+                weekendDay.append(createParagraph(day.name));
+            }
+        }
     </script>
 </body>
 

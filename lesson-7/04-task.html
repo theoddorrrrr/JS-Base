@@ -29,18 +29,20 @@
         let distance = 10;
 
         document.addEventListener("keydown", function (e) {
+            let moveBy = distance;
+            if(e.shiftKey) moveBy *= 2;
             switch (e.code) {
                 case "ArrowLeft":
-                    moveLeft(div, distance);
+                    moveLeft(div, moveBy);
                     break;
                 case "ArrowRight":
-                    moveRight(div, distance);
+                    moveRight(div, moveBy);
                     break;
                 case "ArrowUp":
-                    moveUp(div, distance);
+                    moveUp(div, moveBy);
                     break;
                 case "ArrowDown":
-                    moveDown(div, distance);
+                    moveDown(div, moveBy);
                     break;
             }
         });

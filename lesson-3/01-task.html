@@ -19,6 +19,12 @@
         Разместите все созданные параграфы в div с id output
         */
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        for (const day of days) {
+            let item = document.createElement("p");
+            item.textContent = day;
+            output.append(item);
+        }
     </script>
 </body>
 

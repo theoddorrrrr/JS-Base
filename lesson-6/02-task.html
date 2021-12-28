@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <div>Радиус <input id="radiusInput" type="text"> <br /></div>
+    <div>Высота <input id="heightInput" type="text"> <br /></div>
+
+    <button id="calcButton">Расчет объема</button>
+
+    <div id="output"></div>
+    
     <script>
         /*
         Задание:
@@ -17,6 +24,16 @@
         Разместите на странице два поля ввода - первое для радиуса цилиндра, второе для высоты цилиндра.
         Объем цилиндра выведите в тело страницы.
         */
+        let btn = document.querySelector("#calcButton");
+        let radiusValue = document.querySelector("#radiusInput");
+        let heigthValue = document.querySelector("#heightInput");
+
+        btn.addEventListener("click", function() {
+            let height = heigthValue.value;
+            let radius = radiusValue.value;
+
+            document.querySelector("#output").textContent = Math.PI * Math.pow(radius, 2) * height;
+        });
     </script>
 </body>
 

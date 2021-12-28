@@ -62,6 +62,15 @@
         (В прошлом уроке были рассмотрены примеры, показывающие как получить доступ к родительским элементам, так как 
         удалять нужно не ячейку td, в которой находится значение, а строку tr, в которой расположена эта ячейка).
         */
+
+        let items = document.querySelectorAll("td:nth-child(2)");
+
+        for (const item of items) {
+            if(item.textContent < 100)
+            {
+                item.parentElement.remove();
+            }
+        }
     </script>
 </body>
 

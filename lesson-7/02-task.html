@@ -12,7 +12,9 @@
         Не изменяя расположения элемента script, исправьте ошибку сценария.
         При загрузке данного сценария на странице должно отобразиться сообщение Hello world
         */
-        document.querySelector("#output").textContent = "Hello world";
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("#output").textContent = "Hello world";
+        });
     </script>
 </head>
 

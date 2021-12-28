@@ -52,10 +52,6 @@
             <td>Июль</td>
             <td>100</td>
         </tr>
-        <tr>
-            <th>Итого</th>
-            <th id="output"></th>
-        </tr>
     </table>
     <script>
         /*
@@ -64,6 +60,12 @@
         Если во второй ячейке значение больше 100, строка должна отображаться зеленым цветом, если значение менее 100 - красным цветом.
         Для смены цвета строки используйте код row.style.backgroundColor = "цвет"
         */
+
+        let items = document.querySelectorAll("#statsTable td:nth-child(2)");
+        for (const item of items) {
+            item.textContent >= 100 ?  item.parentElement.style.backgroundColor = "green" 
+                                    : item.parentElement.style.backgroundColor = "pink";
+        }
     </script>
 </body>
 

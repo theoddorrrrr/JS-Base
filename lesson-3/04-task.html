@@ -29,6 +29,7 @@
         Создайте таблицу (table, tr, td) на основе массива объектов с именем source. Каждый объект - отдельная строка таблицы. Свойство month - значение для первой колонок.
         Свойство amont - значение для второй колонки.
         */
+        let table = document.createElement("table");
 
         let source = [
             {
@@ -61,6 +62,24 @@
             }
         ];
 
+        function createRow(colum1Text, colum2Text) {
+            let tr = document.createElement("tr");
+            tr.append(createCell(colum1Text));
+            tr.append(createCell(colum2Text));
+            return tr;
+        }
+
+        function createCell(text) {
+            let td = document.createElement("td");
+            td.textContent = text;
+            return td;
+        }
+
+        for (const item of source) {
+            table.append(createRow(item.amount, item.month));
+        }
+
+        document.body.append(table);
     </script>
 </body>
 

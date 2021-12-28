@@ -26,6 +26,9 @@
         Цвет: #000000
         Где #000000 значение, цвета фона элемента div#color-sample
         */
+        let colorSampleDiv = document.querySelector("#color-sample");
+        let colorOutput = document.querySelector("#color-value");
+
         function getRandomColor() {
             var letters = '0123456789ABCDEF';
             var color = '#';
@@ -35,10 +38,9 @@
             return color;
         }
 
-        let colorSampleDiv = document.querySelector("#color-sample");
-        colorSampleDiv.style.backgroundColor = getRandomColor();
-
-
+        let colorValue = getRandomColor();
+        colorSampleDiv.style.backgroundColor = colorValue;
+        colorOutput.textContent = colorValue;
     </script>
 </body>
 

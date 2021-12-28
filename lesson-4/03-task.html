@@ -19,6 +19,11 @@
         Задание:
         Напишите сценарий, который удалит на странице элементы с атрибутом data-remove
         */
+
+        let items = document.querySelectorAll("[data-remove]");
+        for (const item of items) {
+            item.remove();
+        }
     </script>
 </body>
 

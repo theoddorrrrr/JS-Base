@@ -37,6 +37,11 @@
         }
         return color;
     }
+
+    let items = document.querySelectorAll("p");
+    for (const item of items) {
+        item.style.border = "3px solid " + getRandomColor();
+    }
 </script>
 
 </html>

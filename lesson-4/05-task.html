@@ -29,6 +29,16 @@
             age: "25",
         }
 
+        function bind(user) {
+            for (const item in user) {
+                let value = user[item];
+
+                let element = document.querySelector(`[data-bind="${item}"]`);
+                element.textContent = value;
+            }
+        }
+
+        bind(user);
     </script>
 </body>
 
