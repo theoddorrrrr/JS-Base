@@ -8,16 +8,20 @@
     <style>
        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        table,
-        th,
-        td {
+        div {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem;
             border: 1px solid black;
         }
 
-        td, th {
-            padding: 8px;
+        div + div {
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -26,6 +30,15 @@
     <table>
 
     </table>
+
+    <template>
+        <div>
+            <p>{{month}}</p>
+            <p>{{amount}}</p>
+        </div>
+    </template>
+
+    <script src="mustache.min.js"></script>
 
     <script>
         /*
@@ -65,7 +78,12 @@
                 amount: 100
             }
         ];
+
+        let template = document.querySelector("template").innerHTML;
+        let table = document.querySelector("table");
         
+        source.forEach(item => table.innerHTML += Mustache.render(template, item));
+
     </script>
 </body>
 

@@ -13,11 +13,20 @@
         }
 
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .task-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             width: 500px;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         #start-message {
@@ -34,6 +43,11 @@
 
         .task p {
             margin-left: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
         }
 
         .completed {
@@ -65,12 +79,18 @@
 </head>
 
 <body>
-    <div class="input-panel">
-        <input type="text" id="task-name-input">
-        <button id="add-task-btn">Добавить задачу</button>
-    </div>
-    <div class="task-list">
-        <p id="start-message">Нет новых задач</p>
+    <div class="wrapper">
+        <div class="input-panel">
+            <input type="text" id="task-name-input">
+            <button id="add-task-btn">Добавить задачу</button>
+        </div>
+        <div class="buttons">
+            <button id="uncompletedTasksButton">Показать не завершенные задачи</button>
+            <button id="allTasksButton">Показать все</button>
+        </div>
+        <div class="task-list">
+            <p id="start-message">Нет новых задач</p>
+        </div>
     </div>
 
     <script>
@@ -90,8 +110,12 @@
         let startMessage = document.querySelector("#start-message");
         let taskList = document.querySelector(".task-list");
         let tasks = [];
+        let uncompletedTasksButton = document.querySelector('#uncompletedTasksButton')
+        let allTasksButton = document.querySelector('#allTasksButton')
 
         addTaskButton.addEventListener("click", addTaskHandler);
+        uncompletedTasksButton.addEventListener('click', showUncompletedTasks);
+        allTasksButton.addEventListener('click', showAllTasks);
 
         taskNameInput.addEventListener("keydown", function (e) {
             if (e.code == "Enter") addTaskHandler();
@@ -109,6 +133,25 @@
             } else {
                 alert("введите имя задачи");
             }
+        }
+
+        function showUncompletedTasks() {
+            taskList.innerHTML = "";
+
+            tasks
+                .filter(task => task.isDone == false)
+                .forEach(task => {
+                    task.createIn(taskList);
+                });
+        }
+
+        function showAllTasks() {
+            taskList.innerHTML = "";
+
+            tasks
+                .forEach(task => {
+                    task.createIn(taskList);
+                });
         }
 
         class Task {
@@ -131,6 +174,12 @@
 
                 this.div.append(input);
                 this.div.append(p);
+
+                if (this.isDone) {
+                    this.div.classList.add("completed");
+                    input.checked = true;
+                }
+                
                 element.append(this.div);
             }
 

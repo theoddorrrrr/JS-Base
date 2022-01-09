@@ -33,11 +33,43 @@
         редактирование значения свойства html напрямую.
         */
 
-        function Car(image, manufacturer) {
-            this.image = image;
-            this.manufacturer = manufacturer;
-            this.html = `<img src="images/${this.image}" /><br />Производитель: ${this.manufacturer}<br />`;
+        class Car {
+            #image; 
+            #manufacturer;
+            #html;
+
+            constructor(image, manufacturer) {
+                this.#image = image;
+                this.#manufacturer = manufacturer;
+                this.#html = `<img src="images/${this.image}" /><br />Производитель: ${this.manufacturer}<br />`;
+            }
+
+            get image() {
+                return this.#image;
+            }
+
+            set image(value) {
+                this.#image = value;
+            }
+
+            get manufacturer() {
+                return this.#manufacturer;
+            }
+
+            set manufacturer(value) {
+                this.#manufacturer = value;
+            }
+
+            get html() {
+                return this.#html;
+            }
         }
+
+        // function Car(image, manufacturer) {
+        //     this.image = image;
+        //     this.manufacturer = manufacturer;
+        //     this.html = `<img src="images/${this.image}" /><br />Производитель: ${this.manufacturer}<br />`;
+        // }
 
         let car1 = new Car("audi-a6-250.jpg", "Audi");
         let car2 = new Car("jaguar-x-type-250.jpg", "Jaguar");

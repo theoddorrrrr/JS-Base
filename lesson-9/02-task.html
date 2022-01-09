@@ -39,6 +39,15 @@
                 author: "Секреты JavaScript ниндзя"
             }
         ];
+
+        let template = document.querySelector("template").innerHTML;
+
+        for (let i = 0; i < books.length; i++) {
+            const book = books[i];
+            let html = Mustache.render(template, book);
+
+            document.body.innerHTML += html;
+        }
     </script>
 </body>
 

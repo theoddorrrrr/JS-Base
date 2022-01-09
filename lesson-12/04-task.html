@@ -76,9 +76,21 @@
         class Product extends CatalogItem {
             price;
 
-            constructor(imageaPath, price) {
-                super(imageaPath, "#product");
+            constructor(imageaPath, price, templateSelector = "#product") {
+                super(imageaPath, templateSelector);
                 this.price = price;
+            }
+        }
+
+        class ProductWithDiscount extends Product {
+            discount;
+            oldPrice;
+
+            constructor(imagePath, price, discount) {
+                super(imagePath, price, "#product-on-sale");
+                this.discount = discount;
+                this.oldPrice = this.price;
+                this.price = this.price - (this.price / 100 * this.discount);
             }
         }
 
@@ -100,6 +112,11 @@
             }
 
             add(item) {
+                if (item instanceof CatalogItem != true) {
+                    alert("Данный метод принимает только классы производные от CatalogItem");
+                    return;
+                }
+
                 this.items.push(item);
             }
 
@@ -111,6 +128,8 @@
         }
 
         let catalog = new Catalog("#catalog");
+
+        catalog.add({ error: null });
 
         catalog.add(new Product("images/img1.jpg", 35.55));
         catalog.add(new Product("images/img2.jpg", 25.25));

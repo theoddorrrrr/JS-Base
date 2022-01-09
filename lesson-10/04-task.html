@@ -18,14 +18,14 @@
         function Rect(width, height) {
             this.width = width;
             this.height = height;
+        }
 
-            this.getArea = function () {
-                return this.height * this.width;
-            }
+        Rect.prototype.getArea = function () {
+            return this.height * this.width;
+        }
 
-            this.getPerimeter = function () {
-                return this.height * 2 + this.width * 2;
-            }
+        Rect.prototype.getPerimeter = function () {
+            return this.height * 2 + this.width * 2;
         }
 
         let rect1 = new Rect(100, 50);

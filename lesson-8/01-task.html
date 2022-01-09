@@ -16,8 +16,8 @@
         Добавьте для кнопки два обработчика, один должен сработать в фазе capturing, второй - в фазе bubbling
         */
         let btn = document.querySelector("button");
-        btn.addEventListener("click", function () { alert("CAPTURING"); }, true);
-        btn.addEventListener("click", function () { alert("BUBLING"); });
+        btn.addEventListener("click", () => { console.log("Capturing") }, true);
+        btn.addEventListener("click", () =>  { console.log("Bubling") });
     </script>
 </body>
 

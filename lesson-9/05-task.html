@@ -16,7 +16,14 @@
 <body>
     <p>Пользователи системы:</p>
     <ul id="usersList">
+
     </ul>
+
+    <template id="template">
+        <li>{{name.first}} {{name.last}} ({{email}})</li>
+    </template>
+
+    <script src="mustache.min.js"></script>
     
     <script>
         /*
@@ -138,14 +145,10 @@
         ];
 
         let list = document.querySelector("#usersList");
+        let template = document.querySelector("#template").innerHTML;
         
         for (let i = 0; i < users.length; i++) { 
-            const currentUser = users[i];
-            let fullName = `${currentUser.name.first} ${currentUser.name.first}`;
-            let liContent = `${fullName} (${currentUser.email})`;
-            let li = document.createElement("li");
-            li.textContent = liContent;
-            list.append(li);
+            list.innerHTML += Mustache.render(template, users[i]);
         }
     </script>
 </body>
